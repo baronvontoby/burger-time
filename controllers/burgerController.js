@@ -21,11 +21,15 @@ router.post('/api/post', function(req, res){
     });
 })
 
-router.put('/api/devour', function(req, res){
-    console.log(req);
-    connection.query('UPDATE burgers VALUES (?) WHERE id=?', [req.body.devoured], req.body.id, function(){
+router.put('/api/devour/:id', function(req, res){
+    var id = req.params.id
+    var yes = req.body.devoured
+    console.log(id)
+    console.log(req.body.devoured);
+    connection.query('UPDATE burgers SET devoured='+yes+' WHERE id="'+id+'"', function(err, data){
         console.log('Done')
-    })
+        res.json(data);
+        });
 })
 
 
