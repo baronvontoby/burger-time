@@ -1,0 +1,37 @@
+<h1>Burger Time</h1>
+
+<h2>Burgers that are ready to be devoured!</h2>
+
+<ul>
+    {{#each data}}
+        {{#unless devoured}}
+            {{> burgers/burger-block devoured=false}}
+        {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Burgers that have already been devoured!</h2>
+
+<ul>
+    {{#each data}}
+        {{#if devoured}}
+            {{> burgers/burger-block devoured=true}}
+        {{/if}}
+    {{/each}}
+</ul> 
+
+<h2>Add a Burger</h2>
+<form class='create-form'>
+    <div class='form-group'>
+        <label>Burger Name: </label>
+        <input type='text' id='burgerName' name='name'>
+    </div>
+    <div class='form-group'>
+        <label>Devoured?</label>
+        <select class='form-control' id='devoured'>
+            <option id='one' value='1'>true</option>
+            <option id='two' value='0'>false</option>
+        </select>
+    </div>
+    <button id='new' type="submit">Add da Burger</button>
+</form>
